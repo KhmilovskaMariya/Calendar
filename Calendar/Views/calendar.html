@@ -1,1 +1,27 @@
-﻿{{test}}
+﻿<h2 class="text-center">{{monthName}}</h2>
+{{data}}
+<div class="text-center">
+    <div class="btn-group m-a-1">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                {{currentProfile.Title}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li data-ng-repeat="profile in profiles">
+                    <a ng-href="#/calendar/{{profile.Id}}/date/{{year}}/{{month}}">{{profile.Title}}</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#/profiles" class="btn btn-primary">Керувати</a>
+    </div>
+</div>
+
+<table border="0" class="container-full">
+    <tr ng-repeat="row in [1, 2, 3, 4, 5]">
+        <td ng-repeat="col in [1, 2, 3, 4, 5, 6, 7]" class="text-center">
+            <div class="dayBox" ng-class="{'disabled':row==1&&col<3||row==5&&col>4}">
+                {{(row-1)*7 +col}}
+            </div>
+        </td>
+    </tr>
+</table>

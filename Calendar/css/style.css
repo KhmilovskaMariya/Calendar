@@ -12,3 +12,16 @@
 .m-a-1 {
     margin: 1em;
 }
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+.dayBox {
+    padding: .3em 0em;
+    margin: .2em;
+    box-shadow: 1px 2px 5px #888;
+    font-size: 24pt;
+}
+.dayBox.disabled {
+    background-color: #eee;
+}
