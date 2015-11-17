@@ -1,6 +1,5 @@
 ﻿angular.module('calendar')
-.controller('profiles', function ($scope) {
-    var repository = angular.module('repository');
+.controller('profiles', function ($scope, repository) {
 
     $scope.test = 'this is profiles page ';
 });

@@ -8,6 +8,6 @@
 /// <reference path="../js/repository.js" />
 /// <reference path="../js/controllers/login.js" />
 /// <reference path="../js/controllers/register.js" />
-/// <reference path="../js/controllers/month.js" />
 /// <reference path="../js/controllers/profiles.js" />
 /// <reference path="../js/controllers/records.js" />
+/// <reference path="../js/controllers/calendar.js" />

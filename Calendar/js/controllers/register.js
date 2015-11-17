@@ -1,6 +1,5 @@
 ﻿angular.module('calendar')
-.controller('register', function ($scope) {
-    var repository = angular.module('repository');
+.controller('register', function ($scope, repository) {
 
     $scope.test = 'this is registration page';
 });

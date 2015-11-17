@@ -117,6 +117,10 @@
     <Content Include="css\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
+    <Content Include="js\controllers\records.js" />
+    <Content Include="js\controllers\profiles.js" />
+    <Content Include="js\controllers\month.js" />
+    <Content Include="js\controllers\register.js" />
     <Content Include="js\controllers\login.js" />
     <Content Include="js\main.js" />
     <Content Include="js\repository.js" />
@@ -139,6 +143,10 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Views\login.html" />
+    <Content Include="Views\month.html" />
+    <Content Include="Views\profiles.html" />
+    <Content Include="Views\records.html" />
+    <Content Include="Views\register.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

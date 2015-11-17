@@ -1,9 +1,6 @@
 ﻿angular.module('calendar', ['ngRoute', 'repository'])
 .config(function ($routeProvider) {
     $routeProvider
-        .when('/', {
-            redirectTo: '/month'
-        })
         .when('/login', {
             templateUrl: 'Views/login.html',
             controller: 'login'
@@ -12,9 +9,13 @@
             templateUrl: 'Views/register.html',
             controller: 'register'
         })
-        .when('/month/:year?/:month?', {
-            templateUrl: 'Views/month.html',
-            controller: 'month'
+        .when('/calendar/:profile?', {
+            templateUrl: 'Views/calendar.html',
+            controller: 'calendar'
+        })
+        .when('/calendar/:profile/date/:year?/:month?', {
+            templateUrl: 'Views/calendar.html',
+            controller: 'calendar'
         })
         .when('/profiles', {
             templateUrl: 'Views/profiles.html',
@@ -25,13 +26,12 @@
             controller: 'records'
         })
         .otherwise({
-            redirectTo: '/month'
+            redirectTo: '/calendar'
         });
 })
-.run(function ($http) {
+.run(function ($http, repository) {
     // fake login
     // remove after login page implemented
-    var repository = angular.module('repository');
     if (!localStorage.getItem('token')) {
         repository.user.login('0961234567', 'password',
             function (data) {
