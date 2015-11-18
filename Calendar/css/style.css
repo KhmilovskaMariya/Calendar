@@ -16,12 +16,30 @@
   margin: 0 auto;
   width: 100%;
 }
+.width-col-7{
+    width: 14.2857%;
+}
 .dayBox {
-    padding: .3em 0em;
+    padding: .35em 0em;
     margin: .2em;
     box-shadow: 1px 2px 5px #888;
-    font-size: 24pt;
+    font-size: 20pt;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+.dayBox:hover {
+    text-decoration: none;
+    background-color: #428bca;
+    color: #fff;
 }
 .dayBox.disabled {
     background-color: #eee;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+}
+.dayBox.disabled:hover {
+    color: #000;
 }
