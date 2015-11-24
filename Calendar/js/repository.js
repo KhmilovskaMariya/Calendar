@@ -37,13 +37,13 @@
             deleteByID: function (id, success, fail) {
                 $http.delete('/api/User/' + id)
                 .then(function (response) {
-                    success(response.data)
+                    success(response.data);
                 }, fail);
             },
             deleteCurrent: function (success, fail) {
                 $http.delete('/api/User')
                 .then(function (response) {
-                    success(response.data)
+                    success(response.data);
                 }, fail);
             },
             putForCurrentUser: function (user, success, fail) {
@@ -107,25 +107,25 @@
             getByID: function (id, success, fail) {
                 $http.get('/api/Profile/' + id + '/Records')
                 .then(function (response) {
-                    seccess(response.data);
+                    success(response.data);
                 }, fail);
             },
             getByIDForYear: function (id, year, success, fail) {
                 $http.get('/api/Profile/' + id + '/Records/' + year)
                 .then(function (response) {
-                    seccess(response.data);
+                    success(response.data);
                 }, fail);
             },
             getByIDForYearMonth: function (id, year, month, success, fail) {
                 $http.get('/api/Profile/' + id + '/Records/' + year + '/' + month)
                 .then(function (response) {
-                    seccess(response.data);
+                    success(response.data);
                 }, fail);
             },
             getByIDForYearMonthDay: function (id, year, month, day, success, fail) {
                 $http.get('/api/Profile/' + id + '/Records/' + year + '/' + month + '/' + day)
                 .then(function (response) {
-                    seccess(response.data);
+                    success(response.data);
                 }, fail);
             }
         },
