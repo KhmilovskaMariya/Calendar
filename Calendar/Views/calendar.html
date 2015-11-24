@@ -23,7 +23,8 @@
     </tr>
     <tr ng-repeat="week in days">
         <td ng-repeat="day in week" class="text-center width-col-7">
-            <a href="#" ng-href="#/records/{{year}}/{{month}}/{{day.day}}" class="dayBox" ng-class="{'disabled':!day.currMonth}">
+            <a href="#" ng-href="#/records/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
+               ng-class="{'disabled':!day.currMonth, 'text-bold':day.records>0}">
                 {{day.day}}
             </a>
         </td>
