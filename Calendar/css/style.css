@@ -43,3 +43,6 @@
 .dayBox.disabled:hover {
     color: #000;
 }
+.text-bold {
+    font-weight: bold;
+}

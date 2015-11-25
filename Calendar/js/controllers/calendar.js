@@ -10,6 +10,23 @@
         else {
             $scope.currentProfile = $.grep(profiles, function (p) { return p.Id == $routeParams.profile; })[0];
         }
+        var records = repository.records.getByIDForYearMonth($scope.currentProfile.Id, $scope.year, $scope.month,
+        function (data) {
+            console.log(data);
+            console.log(new Date(data[0].Date).getDate());
+            var days = [];
+            var nextMonth = $scope.month % 12;
+            for (var day = begin; day.getMonth() != nextMonth || day.getDay() != 1; day.addDays(1)) {
+                if (day.getDay() == 1)
+                    days.push([]);
+                days[days.length - 1].push({
+                    day: day.getDate(),
+                    currMonth: day.getMonth() == $scope.month - 1,
+                    records: $.grep(data, function (r) { return new Date(r.Date).getDate() == day.getDate(); }).length
+                });
+            }
+            $scope.days = days;
+        });
     });
 
     if ($routeParams.month === undefined) {
@@ -34,17 +51,8 @@
     }
 
     $scope.daysOfWeek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'НД'];
-   // $scope.daysOfWeek = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
-    var days = [];
-    var nextMonth = $scope.month % 12;
-    for (var day = begin; day.getMonth() != nextMonth || day.getDay() != 1; day.addDays(1)) {
-        if (day.getDay() == 1)
-            days.push([]);
-        days[days.length - 1].push({
-            day: day.getDate(),
-            currMonth: day.getMonth() == $scope.month-1
-        });
-    }
-    $scope.days = days;
+    // $scope.daysOfWeek = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
+
+    
 
 });
