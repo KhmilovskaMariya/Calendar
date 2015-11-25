@@ -1,8 +1,9 @@
 ﻿angular.module('calendar')
 .controller('calendar', function ($scope, $routeParams, repository) {
-
-    // need to use $rootScope to prevent blinking (when?)
-    repository.profiles.getForCurrentUser(function (profiles) {
+    Date.prototype.addDays = function (n) {
+        this.setDate(this.getDate() + n);
+    }
+    var fillProfiles = function (profiles) {
         $scope.profiles = profiles;
         if ($routeParams.profile === undefined) {
             $scope.currentProfile = profiles[0];
@@ -10,24 +11,30 @@
         else {
             $scope.currentProfile = $.grep(profiles, function (p) { return p.Id == $routeParams.profile; })[0];
         }
-        var records = repository.records.getByIDForYearMonth($scope.currentProfile.Id, $scope.year, $scope.month,
-        function (data) {
-            console.log(data);
-            console.log(new Date(data[0].Date).getDate());
-            var days = [];
-            var nextMonth = $scope.month % 12;
-            for (var day = begin; day.getMonth() != nextMonth || day.getDay() != 1; day.addDays(1)) {
-                if (day.getDay() == 1)
-                    days.push([]);
-                days[days.length - 1].push({
-                    day: day.getDate(),
-                    currMonth: day.getMonth() == $scope.month - 1,
-                    records: $.grep(data, function (r) { return new Date(r.Date).getDate() == day.getDate(); }).length
-                });
-            }
-            $scope.days = days;
-        });
-    });
+    };
+    var countRecordsForDay = function (records, day) {
+        return $.grep(records, function (r) {
+            return new Date(r.Date).getDate() == day;
+        }).length;
+    };
+    var fillDays = function (records) {
+        var jsMonth = $scope.month - 1;
+        var begin = new Date($scope.year, jsMonth, 1);
+        var dayOfWeek = (begin.getDay() + 6) % 7;
+        begin.setDate(1 - dayOfWeek);   // last monday of previous month or 1st of current month if it is monday
+        var days = [];
+        var nextMonth = (jsMonth + 1) % 12;
+        for (var day = begin; day.getMonth() != nextMonth || day.getDay() != 1/*monday*/; day.addDays(1)) {
+            if (day.getDay() == 1) // new row starts with monday
+                days.push([]);
+            days[days.length - 1].push({
+                day: day.getDate(),
+                currMonth: day.getMonth() == jsMonth,
+                records: countRecordsForDay(records, day.getDate())
+            });
+        }
+        $scope.days = days;
+    };
 
     if ($routeParams.month === undefined) {
         var now = new Date();
@@ -36,23 +43,20 @@
     }
     $scope.year = $routeParams.year;
     $scope.month = $routeParams.month;
-    var monthNames = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
-    $scope.monthName = monthNames[$routeParams.month - 1];
-
-    var daysInMonth = function (year, month) {
-        var date = new Date(year, month, -1);
-        return date.getDate() + 1;
-    }
-    var begin = new Date($scope.year, $scope.month - 1, 1);
-    var dayOfWeek = (begin.getDay() + 6) % 7;
-    begin.setDate(1 - dayOfWeek);
-    Date.prototype.addDays = function (n) {
-        this.setDate(this.getDate() + n);
-    }
 
     $scope.daysOfWeek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'НД'];
-    // $scope.daysOfWeek = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
+    var monthNames = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
+    $scope.monthName = monthNames[$scope.month - 1];
 
-    
-
+    // need to use $rootScope to prevent blinking (when?)
+    repository.profiles.getForCurrentUser(function (profiles) {
+        fillProfiles(profiles);
+        var records = repository.records.getByIDForYearMonth(
+            $scope.currentProfile.Id,
+            $scope.year,
+            $scope.month,
+            function (records) {
+                fillDays(records);
+            });
+    });
 });
