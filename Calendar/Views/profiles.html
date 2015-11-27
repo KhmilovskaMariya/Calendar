@@ -1,1 +1,15 @@
-﻿{{test}}
+﻿<div>
+    <h2 class="h2, text-center">Profiles</h2>
+    <ul class="list-group">
+        <li ng-repeat="profile in profiles" class="list-group-item clearfix">
+                {{profile.Title}}
+                <span class="pull-right"><button class="btn btn-default btn-xs">delete</button> <button class="btn btn-default  btn-xs">edit</button></span>
+        </li>
+    </ul>
+    <form class="input-group">
+        <input type="text" ng-model="newProfile" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">add</button>
+        </span>
+    </form>
+</div>
