@@ -1,15 +1,35 @@
 ﻿<div>
     <h2 class="h2, text-center">Profiles</h2>
+
     <ul class="list-group">
         <li ng-repeat="profile in profiles" class="list-group-item clearfix">
+            <div ng-hide="isEditing && indexToEdit === $index">
                 {{profile.Title}}
-                <span class="pull-right"><button class="btn btn-default btn-xs">delete</button> <button class="btn btn-default  btn-xs">edit</button></span>
+                <span class="pull-right">
+                    <button class="btn btn-default btn-xs" ng-click="startEdit($index)">edit</button>
+                    <button class="btn btn-default btn-xs" ng-click="onDeleteButtonClick($index)">delete</button>
+                </span>
+            </div>
+
+            <form ng-show="isEditing && indexToEdit === $index">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="newEditedTitle.Title"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="saveEdited($index)" >save</button>
+                        <button class="btn btn-default" type="button" ng-click="cancelEdit($index)">cancel</button>
+                    </span>
+                </div>
+            </form>
+
         </li>
     </ul>
-    <form class="input-group">
-        <input type="text" ng-model="newProfile" class="form-control" />
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button">add</button>
-        </span>
+
+    <form>
+        <div class="input-group">
+            <input type="text" ng-model="newProfileTitle" class="form-control" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" ng-click="onAddProfileClick()">add</button>
+            </span>
+        </div>
     </form>
 </div>
