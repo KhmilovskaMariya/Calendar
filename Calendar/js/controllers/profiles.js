@@ -9,30 +9,48 @@
         $scope.currentUserId = x.Id;
     });
 
+    $scope.errorEmpty = false;
+
+    $scope.errorExist = false;
+
+    $scope.hideErrors = function () {
+        $scope.errorEmpty = false;
+        $scope.errorExist = false;
+    }
+
+    $scope.doesExist = function (x, index) {
+        var exist = false;
+
+        for (var i = 0; i < $scope.profiles.length; i++) {
+            if (x == $scope.profiles[i].Title && i != index) {
+                exist = true;
+                break;
+            }
+        }
+        return exist;
+    }
+
     $scope.onAddProfileClick = function () {
         if ($scope.newProfileTitle == undefined || $scope.newProfileTitle == "") {
-            console.log("empty input")
+
+            $scope.errorEmpty = true;
+            $scope.errorExist = false;
         }
         else {
-            var doesExists = false;
-
-            for (var i = 0; i < $scope.profiles.length; i++) {
-                if ($scope.newProfileTitle == $scope.profiles[i].Title) {
-                    doesExists = true;
-                    break;
-                }
-            }
-
-            if (!doesExists) {
+            if (!$scope.doesExist($scope.newProfileTitle, -1)) {
                 repository.profile.create({ Title: $scope.newProfileTitle, UserId: $scope.currentUserId }, function (x) {
                     $scope.profiles.push(x);
                 });
+                $scope.errorEmpty = false;
+                $scope.errorExist = false;
+                $scope.newProfileTitle = "";
             }
             else {
-                console.log("already exists");
+
+                $scope.errorExist = true;
+                $scope.errorEmpty = false;
             }
 
-            $scope.newProfileTitle = "";
         }
     };
 
@@ -61,18 +79,36 @@
         $scope.indexToEdit = -1;
         $scope.isEditing = false;
         $scope.newEditedTitle.Title = $scope.profiles[index].Title;
+        $scope.errorEmpty = false;
+        $scope.errorExist = false;
     };
 
     $scope.saveEdited = function (index) {
-        if ($scope.profiles[index].Title != $scope.newEditedTitle.Title) {
-            repository.profile.putById($scope.profiles[index].Id, {
-                Id: $scope.profiles[index].Id,
-                Title: $scope.newEditedTitle.Title,
-                UserId: $scope.currentUserId
-            }, function () { });
-            $scope.profiles[index].Title = $scope.newEditedTitle.Title;
+        if ($scope.newEditedTitle.Title == undefined || $scope.newEditedTitle.Title == "") {
+
+            $scope.errorEmpty = true;
+            $scope.errorExist = false;
         }
-        $scope.isEditing = false;
-        $scope.indexToEdit = -1;
+        else if (!$scope.doesExist($scope.newEditedTitle.Title, index)) {
+            console.log("mes");
+            if ($scope.profiles[index].Title != $scope.newEditedTitle.Title) {
+                repository.profile.putById($scope.profiles[index].Id, {
+                    Id: $scope.profiles[index].Id,
+                    Title: $scope.newEditedTitle.Title,
+                    UserId: $scope.currentUserId
+                }, function () { });
+
+                $scope.profiles[index].Title = $scope.newEditedTitle.Title;
+            }
+            $scope.isEditing = false;
+            $scope.indexToEdit = -1;
+            $scope.errorEmpty = false;
+            $scope.errorExist = false;
+        }
+        else {
+
+            $scope.errorExist = true;
+            $scope.errorEmpty = false;
+        }
     };
 });
