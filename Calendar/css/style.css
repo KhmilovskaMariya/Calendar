@@ -20,6 +20,7 @@
     width: 14.2857%;
 }
 .dayBox {
+    position: relative;
     padding: .35em 0em;
     margin: .2em;
     box-shadow: 1px 2px 5px #888;
@@ -45,4 +46,15 @@
 }
 .text-bold {
     font-weight: bold;
+}
+.recordsCount {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    font-size: 50%;
+    font-weight: normal;
+    color: #888;
+}
+.dayBox:hover .recordsCount{
+    color: #ddd;
 }

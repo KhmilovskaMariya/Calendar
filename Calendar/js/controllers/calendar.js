@@ -48,7 +48,6 @@
     var monthNames = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
     $scope.monthName = monthNames[$scope.month - 1];
 
-    // need to use $rootScope to prevent blinking (when?)
     repository.profiles.getForCurrentUser(function (profiles) {
         fillProfiles(profiles);
         var records = repository.records.getByIDForYearMonth(

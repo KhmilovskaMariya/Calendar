@@ -26,6 +26,7 @@
             <a href="#" ng-href="#/records/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
                ng-class="{'disabled':!day.currMonth, 'text-bold':day.records>0}">
                 {{day.day}}
+                <span class="recordsCount" ng-if="day.records>0">{{day.records}}</span>
             </a>
         </td>
     </tr>
