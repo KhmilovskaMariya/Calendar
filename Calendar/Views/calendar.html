@@ -1,4 +1,6 @@
-﻿<h2 class="text-center">{{monthName}}</h2>
+﻿<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{prev.year}}/{{prev.month}}" class="monthNav previous glyphicon glyphicon-menu-left"></a>
+<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{next.year}}/{{next.month}}" class="monthNav next glyphicon glyphicon-menu-right"></a>
+<h2 class="text-center">{{monthName}} {{year}}</h2>
 <div class="text-center">
     <div class="btn-group m-a-1">
         <div class="btn-group">
@@ -23,7 +25,7 @@
     </tr>
     <tr ng-repeat="week in days">
         <td ng-repeat="day in week" class="text-center width-col-7">
-            <a href="#" ng-href="#/records/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
+            <a href="#" ng-href="#/records/{{currentProfile.Id}}/date/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
                ng-class="{'disabled':!day.currMonth, 'text-bold':day.records>0}">
                 {{day.day}}
                 <span class="recordsCount" ng-if="day.records>0">{{day.records}}</span>

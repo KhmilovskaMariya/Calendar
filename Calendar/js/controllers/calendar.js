@@ -43,6 +43,16 @@
     }
     $scope.year = $routeParams.year;
     $scope.month = $routeParams.month;
+    var nextMonth = new Date($scope.year, $scope.month, 1);
+    var prevMonth = new Date($scope.year, $scope.month - 2, 1);
+    $scope.next = {
+        year: nextMonth.getFullYear(),
+        month: nextMonth.getMonth() + 1
+    };
+    $scope.prev = {
+        year: prevMonth.getFullYear(),
+        month: prevMonth.getMonth() + 1
+    };
 
     $scope.daysOfWeek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'НД'];
     var monthNames = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];

@@ -21,7 +21,7 @@
             templateUrl: 'Views/profiles.html',
             controller: 'profiles'
         })
-        .when('/records/:year/:month/:day', {
+        .when('/records/:profile/date/:year/:month/:day', {
             templateUrl: 'Views/records.html',
             controller: 'records'
         })
