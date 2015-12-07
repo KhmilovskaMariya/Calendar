@@ -24,7 +24,9 @@ namespace Calendar.Migrations
 					FirstName = "John",
 					LastName = "Doe",
 					PhoneNumber = "0961234567",
-					Password = Crypto.HashPassword("password")
+					Password = Crypto.HashPassword("password"),
+					City = "Lviv",
+					Email = "john@gmail.com"
 				},
 				new User()
 				{
@@ -32,7 +34,9 @@ namespace Calendar.Migrations
 					FirstName = "Jane",
 					LastName = "Smith",
 					PhoneNumber = "0937654321",
-					Password = Crypto.HashPassword("123")
+					Password = Crypto.HashPassword("123"),
+					City = "Kyiv",
+					Email = "smith@live.net"
 				}
 			);
 			context.Profiles.AddOrUpdate(

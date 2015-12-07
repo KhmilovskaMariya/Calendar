@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201511151547195_InitialCreate.Designer.cs">
       <DependentUpon>201511151547195_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512071803455_UserCityEmail.cs" />
+    <Compile Include="Migrations\201512071803455_UserCityEmail.Designer.cs">
+      <DependentUpon>201512071803455_UserCityEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CalendarContext.cs" />
     <Compile Include="Models\Profile.cs" />
@@ -185,6 +189,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511151547195_InitialCreate.resx">
       <DependentUpon>201511151547195_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512071803455_UserCityEmail.resx">
+      <DependentUpon>201512071803455_UserCityEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
