@@ -59,6 +59,36 @@ namespace Calendar.Controllers
 			return GetUser(int.Parse(User.Identity.Name));
 		}
 
+		// GET api/User/Current/Profiles/Count
+		[Authorize]
+		[Route("api/User/Current/Profiles/Count")]
+		[ResponseType(typeof(int))]
+		public IHttpActionResult GetProfilesCount()
+		{
+			User user = db.Users.Find(int.Parse(User.Identity.Name));
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(user.Profiles.Count);
+		}
+
+		// GET api/User/Current/Records/Count
+		[Authorize]
+		[Route("api/User/Current/Records/Count")]
+		[ResponseType(typeof(int))]
+		public IHttpActionResult GetRecordsCount()
+		{
+			User user = db.Users.Find(int.Parse(User.Identity.Name));
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(user.Profiles.SelectMany(p => p.Records).Count());
+		}
+
 		// GET api/User/1/Profiles
 		[Authorize(Roles = "admin")]
 		[Route("api/User/{id:int}/Profiles")]

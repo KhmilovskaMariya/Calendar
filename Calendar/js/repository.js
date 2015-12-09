@@ -95,6 +95,12 @@
                     .then(function (response) {
                         success(response.data);
                     }, fail);
+            },
+            countForCurrentUser: function (success, fail) {
+                $http.get('/api/User/Current/Profiles/Count')
+                    .then(function (response) {
+                        success(response.data);
+                    }, fail);
             }
         },
         records: {
@@ -127,6 +133,12 @@
                 .then(function (response) {
                     success(response.data);
                 }, fail);
+            },
+            countForCurrentUser: function (success, fail) {
+                $http.get('/api/User/Current/Records/Count')
+                    .then(function (response) {
+                        success(response.data);
+                    }, fail);
             }
         },
         profile: {

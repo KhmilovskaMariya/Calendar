@@ -53,7 +53,7 @@
                 // if unauthorized remove current token and redirect to login page
                 localStorage.removeItem('token');
                 $rootScope.tokenExpired = true; // notify user about what happend
-                location.hash = '/login';
+                location.hash = '#/login';
             }
         });
     }
