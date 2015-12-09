@@ -36,15 +36,27 @@
         repository.user.login('0961234567', 'password',
             function (data) {
                 localStorage.setItem('token', data['access_token']);
+                $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
             }, function (data) {
                 console.log(data);
             });
     }
 })
-.run(function ($http) {
+.run(function ($http, repository, $rootScope) {
     // if previously logged in - set authorizatin header
-    if (localStorage.getItem('token'))
+    if (localStorage.getItem('token')) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
+        // check if token is hasn't expored yet
+        repository.user.getCurrent(function (user) {
+        }, function (data) {
+            if (data.status == 401) {
+                // if unauthorized remove current token and redirect to login page
+                localStorage.removeItem('token');
+                $rootScope.tokenExpired = true; // notify user about what happend
+                location.hash = '/login';
+            }
+        });
+    }
 })
 .run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
