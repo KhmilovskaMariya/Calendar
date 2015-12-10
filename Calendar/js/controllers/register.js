@@ -1,4 +1,5 @@
-﻿angular.module('calendar')
+﻿// Yaroslav Khamar
+angular.module('calendar')
     .controller('register', function ($scope, repository, $http) {
         $scope.userExists = false;
 
