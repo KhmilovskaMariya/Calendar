@@ -29,19 +29,6 @@
             redirectTo: '/calendar'
         });
 })
-.run(function ($http, repository) {
-    // fake login
-    // remove after login page implemented
-    if (!localStorage.getItem('token')) {
-        repository.user.login('0961234567', 'password',
-            function (data) {
-                localStorage.setItem('token', data['access_token']);
-                $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
-            }, function (data) {
-                console.log(data);
-            });
-    }
-})
 .run(function ($http, repository, $rootScope) {
     // if previously logged in - set authorizatin header
     if (localStorage.getItem('token')) {
