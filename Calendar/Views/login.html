@@ -1,7 +1,10 @@
-﻿<h2 class="text-center">Логін</h2>
+﻿<h2 class="text-center">Login</h2>
 <form class="form-horizontal" role="form" ng-submit="login()">
+    <div class="alert alert-warning" ng-show="tokenExpired">
+        <strong>Info!</strong> You login session has expired.
+    </div>
     <div class="alert alert-danger" ng-show="errorPhone || errorPassword">
-        <strong>Помилка!</strong> <span ng-show="errorPhone">Номер телефону</span><span ng-show="errorPassword">Пароль</span> введено не правильно.
+        <strong>Error!</strong> <span ng-show="errorPhone">Phone number</span><span ng-show="errorPassword">Password</span> is incorrect.
     </div>
     <div class="form-group" ng-class="{'has-error' : errorPhone, 'has-feedback' : errorPhone}">
         <label class="control-label col-sm-2" for="phone">Phone:</label>
@@ -19,7 +22,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-10 col-sm-4">
-            <button type="submit"  class="btn btn-default">Login</button>
+            <button type="submit"  class="btn btn-primary">Log in</button>
         </div>
     </div>
 </form>
