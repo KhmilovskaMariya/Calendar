@@ -1,10 +1,12 @@
-﻿<h2 class="text-center">Login</h2>
+﻿<!-- Mariya Khmilovska -->
+<h2 class="text-center">Login</h2>
 <form class="form-horizontal" role="form" ng-submit="login()">
     <div class="alert alert-warning" ng-show="tokenExpired">
         <strong>Info!</strong> You login session has expired.
     </div>
     <div class="alert alert-danger" ng-show="errorPhone || errorPassword">
         <strong>Error!</strong> <span ng-show="errorPhone">Phone number</span><span ng-show="errorPassword">Password</span> is incorrect.
+        <br/>Whould you like to <a href="#/register">register</a> now?
     </div>
     <div class="form-group" ng-class="{'has-error' : errorPhone, 'has-feedback' : errorPhone}">
         <label class="control-label col-sm-2" for="phone">Phone:</label>
