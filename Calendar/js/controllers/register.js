@@ -25,12 +25,17 @@ angular.module('calendar')
                             Password: $scope.user.password,
                             City: $scope.user.city,
                             Email: $scope.user.email
+
+                            // creating default profile
                         }, function (user) {
                             repository.user.login($scope.user.phonenumber, $scope.user.password,
                                 function (data) {
-                                    localStorage.setItem('token', data.access_token);
-                                    $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
-                                    location.hash = '#/calendar';
+                                    repository.profile.create({
+                                        Title: 'Default',
+                                        UserId: user.Id
+                                    }, function (profile) {
+                                        location.hash = '#/calendar';
+                                    })
                                 });
                         });
                     }
