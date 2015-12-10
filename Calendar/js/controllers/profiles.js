@@ -65,9 +65,11 @@ angular.module('calendar')
     //deletes profile from database and profiles array
     //parameters: index - index of the profile
     $scope.onDeleteButtonClick = function (index) {
-        repository.profile.delByid($scope.profiles[index].Id, function () {
-            $scope.profiles.splice(index, 1);
-        });
+        if (confirm("Do you really want to delete this profile?")) {
+            repository.profile.delByid($scope.profiles[index].Id, function () {
+                $scope.profiles.splice(index, 1);
+            });
+        }
     };
 
     $scope.isEditing = false;
