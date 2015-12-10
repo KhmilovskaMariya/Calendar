@@ -92,3 +92,12 @@ body {
 .monthNav.next {
     float: right;
 }
+.userPanel {
+    float: right;
+    margin-top: 10px;
+    text-align: right;
+}
+
+
+
+>>>>>>> ec56ede5fb11407728265cf1a71c7ba8e93baed7

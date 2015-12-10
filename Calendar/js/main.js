@@ -46,8 +46,10 @@
     // if previously logged in - set authorizatin header
     if (localStorage.getItem('token')) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
-        // check if token is hasn't expored yet
+
+        // check if token hasn't expired yet
         repository.user.getCurrent(function (user) {
+            $rootScope.currentUser = user;
         }, function (data) {
             if (data.status == 401) {
                 // if unauthorized remove current token and redirect to login page
@@ -57,7 +59,14 @@
             }
         });
     }
+    $rootScope.logout = function () {
+        localStorage.removeItem('token');
+        $http.defaults.headers.common.Authorization = '';
+        $rootScope.currentUser = undefined;
+        location.hash = '#/login';
+    }
 })
+
 .run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         // to prevent blinking when navigating between same controllers

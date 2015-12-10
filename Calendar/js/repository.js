@@ -1,6 +1,6 @@
 ﻿angular.module('repository', [])
-.factory('repository', function ($http) {
-    return {
+.factory('repository', function ($http, $rootScope) {
+    var repository ={
         test: {
             getTest: function () {
                 return 'hello world';
@@ -15,7 +15,12 @@
                 }), {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).then(function (response) {
-                    success(response.data);
+                    localStorage.setItem('token', response.data['access_token']);
+                    $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
+                    repository.user.getCurrent(function (user) {
+                        $rootScope.currentUser = user;
+                        success(response.data);
+                    });
                 }, function (response) {
                     response.data.status = response.status;
                     if (fail !== undefined)
@@ -194,4 +199,5 @@
             }
         }
     };
+    return repository;
 });

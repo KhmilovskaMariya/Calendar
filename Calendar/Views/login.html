@@ -1,1 +1,30 @@
-﻿{{test}}
+﻿<!-- Mariya Khmilovska -->
+<h2 class="text-center">Login</h2>
+<form class="form-horizontal" role="form" ng-submit="login()">
+    <div class="alert alert-warning" ng-show="tokenExpired">
+        <strong>Info!</strong> You login session has expired.
+    </div>
+    <div class="alert alert-danger" ng-show="errorPhone || errorPassword">
+        <strong>Error!</strong> <span ng-show="errorPhone">Phone number</span><span ng-show="errorPassword">Password</span> is incorrect.
+        <br/>Whould you like to <a href="#/register">register</a> now?
+    </div>
+    <div class="form-group" ng-class="{'has-error' : errorPhone, 'has-feedback' : errorPhone}">
+        <label class="control-label col-sm-2" for="phone">Phone:</label>
+        <div class="col-sm-10">
+            <input type="tel" id="phone" class="form-control" placeholder="Enter phone" ng-model="phone" ng-change="errorPhone = false">
+            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="errorPhone"></span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error' : errorPassword, 'has-feedback' : errorPassword}">
+        <label class="control-label col-sm-2" for="pass">Password:</label>
+        <div class="col-sm-10">
+            <input type="password" id="pass" class="form-control" placeholder="Enter password" ng-model="password" ng-change="errorPassword = false">
+            <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="errorPassword"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-10 col-sm-4">
+            <button type="submit"  class="btn btn-primary">Log in</button>
+        </div>
+    </div>
+</form>
