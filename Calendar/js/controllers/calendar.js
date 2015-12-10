@@ -15,7 +15,8 @@ angular.module('calendar')
     };
     var countRecordsForDay = function (records, day) {
         return $.grep(records, function (r) {
-            return new Date(r.Date).getDate() == day;
+            var rDate = new Date(r.Date);
+            return rDate.getDate() == day.getDate() && rDate.getMonth() == day.getMonth();
         }).length;
     };
     // create calendar matrix out of retived records for current month
@@ -32,7 +33,7 @@ angular.module('calendar')
             days[days.length - 1].push({
                 day: day.getDate(),
                 currMonth: day.getMonth() == jsMonth,
-                records: countRecordsForDay(records, day.getDate())
+                records: countRecordsForDay(records, day)
             });
         }
         $scope.days = days;
