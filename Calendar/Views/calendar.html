@@ -1,5 +1,6 @@
-﻿<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{prev.year}}/{{prev.month}}" class="monthNav previous glyphicon glyphicon-menu-left"></a>
-<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{next.year}}/{{next.month}}" class="monthNav next glyphicon glyphicon-menu-right"></a>
+﻿<!-- Oleg Pylypchak -->
+<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{prev.year}}/{{prev.month}}" class="monthNav previous glyphicon glyphicon-menu-left" title="Previous month"></a>
+<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{next.year}}/{{next.month}}" class="monthNav next glyphicon glyphicon-menu-right" title="Next month"></a>
 <h2 class="text-center">{{monthName}} {{year}}</h2>
 <div class="text-center">
     <div class="btn-group m-a-1">
@@ -13,7 +14,7 @@
                 </li>
             </ul>
         </div>
-        <a href="#/profiles" class="btn btn-primary">Керувати</a>
+        <a href="#/profiles" class="btn btn-primary">Manage</a>
     </div>
 </div>
 

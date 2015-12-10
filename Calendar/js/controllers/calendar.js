@@ -1,4 +1,5 @@
-﻿angular.module('calendar')
+﻿// Oleg Pylypchak
+angular.module('calendar')
 .controller('calendar', function ($scope, $routeParams, repository) {
     Date.prototype.addDays = function (n) {
         this.setDate(this.getDate() + n);
@@ -17,6 +18,7 @@
             return new Date(r.Date).getDate() == day;
         }).length;
     };
+    // create calendar matrix out of retived records for current month
     var fillDays = function (records) {
         var jsMonth = $scope.month - 1;
         var begin = new Date($scope.year, jsMonth, 1);
@@ -36,6 +38,7 @@
         $scope.days = days;
     };
 
+    // if date not specified use current date
     if ($routeParams.month === undefined) {
         var now = new Date();
         $routeParams.year = now.getFullYear();
@@ -54,8 +57,8 @@
         month: prevMonth.getMonth() + 1
     };
 
-    $scope.daysOfWeek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'НД'];
-    var monthNames = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
+    $scope.daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     $scope.monthName = monthNames[$scope.month - 1];
 
     repository.profiles.getForCurrentUser(function (profiles) {
