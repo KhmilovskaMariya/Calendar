@@ -6,7 +6,7 @@ angular.module('calendar')
     $scope.date = {
         day: $routeParams.day,
         monthName: monthNames[$routeParams.month - 1],
-        month: $routeParams.month - 1,
+        month: $routeParams.month,
         year: $routeParams.year
     };
     $scope.profileId = $routeParams.profile;
