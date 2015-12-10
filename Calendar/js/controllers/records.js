@@ -5,8 +5,10 @@
     $scope.date = {
         day: $routeParams.day,
         monthName: monthNames[$routeParams.month - 1],
+        month: $routeParams.month - 1,
         year: $routeParams.year
     };
+    $scope.profileId = $routeParams.profile;
 
 
     var fillRecords = function (records) {
@@ -89,7 +91,7 @@
     $scope.cancelEdit = function (index) {
         $scope.indexToEdit = -1;
         $scope.isEditing = false;
-        $scope.newRecordText.Text = $scope.profiles[index].Text;
+        $scope.newRecordText.Text = $scope.records[index].Text;
         $scope.errorEmpty = false;
         $scope.errorExist = false;
     };
