@@ -117,6 +117,7 @@
     <Content Include="css\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
+    <Content Include="js\controllers\changeInfo.js" />
     <Content Include="js\controllers\records.js" />
     <Content Include="js\controllers\profiles.js" />
     <Content Include="js\controllers\calendar.js" />
@@ -142,6 +143,7 @@
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Views\changeInfo.html" />
     <Content Include="Views\login.html" />
     <Content Include="Views\calendar.html" />
     <Content Include="Views\profiles.html" />

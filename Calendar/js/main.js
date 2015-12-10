@@ -21,6 +21,10 @@
             templateUrl: 'Views/profiles.html',
             controller: 'profiles'
         })
+        .when('/user', {
+            templateUrl: 'Views/changeInfo.html',
+            controller: 'changeInfo'
+        })
         .when('/records/:profile/date/:year/:month/:day', {
             templateUrl: 'Views/records.html',
             controller: 'records'

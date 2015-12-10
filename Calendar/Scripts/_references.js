@@ -11,3 +11,4 @@
 /// <reference path="../js/controllers/profiles.js" />
 /// <reference path="../js/controllers/records.js" />
 /// <reference path="../js/controllers/calendar.js" />
+/// <reference path="../js/controllers/changeinfo.js" />

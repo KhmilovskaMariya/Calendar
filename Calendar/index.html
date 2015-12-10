@@ -15,6 +15,7 @@
     <script type="text/javascript" src="js/controllers/calendar.js"></script>
     <script type="text/javascript" src="js/controllers/profiles.js"></script>
     <script type="text/javascript" src="js/controllers/records.js"></script>
+    <script type="text/javascript" src="js/controllers/changeInfo.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="Content/bootstrap.min.css">
@@ -25,7 +26,7 @@
         <div class="col-lg-6 col-lg-offset-3">
             <div class="userPanel" ng-show="currentUser">
                 <strong>{{currentUser.FirstName}} {{currentUser.LastName}}</strong><br />
-                <a href="#" ng-click="logout()">Log out</a>
+                <a href="#/user">Change</a> | <a href="#" ng-click="logout()">Log out</a>
             </div>
             <h1 class="text-center mainTitle">Calendar</h1>
             <div class="main" data-ng-view>
