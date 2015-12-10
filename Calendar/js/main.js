@@ -60,6 +60,25 @@
 })
 .run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        // to prevent blinking when navigating between same controllers
+        // need to preserve some scope variables
+        if (current !== undefined && current.controller == next.controller) {
+            if (current.controller == 'calendar') {
+                $rootScope.currentProfile = current.scope.currentProfile;
+                $rootScope.days = current.scope.days;
+            }
+        }
+        // when navigation to different controller
+        // need to clean root scope from saved variables
+        if (current !== undefined && current.controller != next.controller) {
+            if (current.controller == 'calendar') {
+                // if scope state was previously preserverd
+                if ($rootScope.currentProfile != undefined) {
+                    delete $rootScope.currentProfile;
+                    delete $rootScope.days;
+                }
+            }
+        }
         // if user is not logged in - redirect to login page
         if (!localStorage.getItem('token')) {
             if (next.controller != 'login' && next.controller != 'register') {

@@ -18,7 +18,6 @@ body {
 .m-a-1 {
     margin: 1em;
 }
-
 .mainTitle {
     color: #FFE893;
     text-shadow: 0px 0px 20px #000;
@@ -26,5 +25,70 @@ body {
     font-size: 5em;
 }
 .topMargin {
-    margin-top:10px;
+    margin-top: 10px;
+}
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+.width-col-7{
+    width: 14.2857%;
+}
+.dayBox {
+    position: relative;
+    padding: .35em 0em;
+    margin: .2em;
+    box-shadow: 1px 2px 5px #888;
+    font-size: 20pt;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+.dayBox:hover {
+    text-decoration: none;
+    background-color: #428bca;
+    color: #fff;
+}
+.dayBox.disabled {
+    background-color: #eee;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+}
+.dayBox.disabled:hover {
+    color: #000;
+}
+.text-bold {
+    font-weight: bold;
+}
+.recordsCount {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    font-size: 50%;
+    font-weight: normal;
+    color: #888;
+}
+.dayBox:hover .recordsCount{
+    color: #ddd;
+}
+.monthNav, .monthNav:active {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    font-size: 30px;
+    /*line-height: 100px;*/
+    padding: 30px;
+    cursor: pointer;
+}
+.monthNav:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+.monthNav.previous {
+    float: left;
+}
+.monthNav.next {
+    float: right;
 }
