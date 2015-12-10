@@ -22,6 +22,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="userPanel" ng-show="currentUser">
+            {{currentUser.FirstName}} {{currentUser.LastName}}<br />
+            <a href="#" ng-click="logout()">Вийти</a>
+        </div>
         <h1 class="text-center">Календар</h1>
         <div class="col-lg-6 col-lg-offset-3 main" data-ng-view >
             

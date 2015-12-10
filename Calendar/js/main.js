@@ -41,11 +41,22 @@
             });
     }
 })
-.run(function ($http) {
+.run(function ($http, repository, $rootScope) {
     // if previously logged in - set authorizatin header
-    if (localStorage.getItem('token'))
+    if (localStorage.getItem('token')) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.getItem('token');
+        repository.user.getCurrent(function (user) {
+            $rootScope.currentUser = user;
+        });
+    }
+    $rootScope.logout = function () {
+        localStorage.removeItem('token');
+        $http.defaults.headers.common.Authorization = '';
+        $rootScope.currentUser = undefined;
+        location.hash = '#/login';
+    }
 })
+
 .run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         // if user is not logged in - redirect to login page
