@@ -4,15 +4,17 @@
     <!-- NAME -->
     <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && (userForm.name.$dirty || submitted)}">
         <label>Name</label>
-        <input type="text" name="name" class="form-control" ng-model="user.name" placeholder="Your Name" ng-required="true">
+        <input type="text" name="name" class="form-control" ng-model="user.name" ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Your Name" ng-required="true">
         <p ng-show="userForm.name.$error.required && (userForm.name.$dirty || submitted)" class="help-block">You name is required.</p>
+        <p ng-show="userForm.name.$error.pattern && (userForm.name.$dirty || submitted)" class="help-block">Only letters and hyphens are allowed.</p>
     </div>
 
     <!-- SURNAME -->
     <div class="form-group" ng-class="{ 'has-error' : userForm.surname.$invalid && (userForm.surname.$dirty || submitted)}">
         <label>Surname</label>
-        <input type="text" name="surname" class="form-control" ng-model="user.surname" placeholder="Your Surname" ng-required="true">
+        <input type="text" name="surname" class="form-control" ng-model="user.surname"  ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Your Surname" ng-required="true">
         <p ng-show="userForm.surname.$error.required && (userForm.surname.$dirty || submitted)" class="help-block">Your surname is required.</p>
+        <p ng-show="userForm.surname.$error.pattern && (userForm.surname.$dirty || submitted)" class="help-block">Only letters and hyphens are allowed.</p>
     </div>
 
     <!-- PASSWORD -->
@@ -44,15 +46,16 @@
         <label>Phone Number</label>
         <input type="tel" name="phonenumber" class="form-control" ng-model="user.phonenumber" placeholder="Your Phone Number" ng-minlength="10" ng-maxlength="10" ng-required="true">
         <p ng-show="userExists" class="help-block">Phone number already registered.</p>
-        <p ng-show="userForm.phonenumber.$error.required" class="help-block">Your phone number is required.</p>
+        <p ng-show="userForm.phonenumber.$error.required && (userForm.phonenumber.$dirty || submitted)" class="help-block">Your phone number is required.</p>
         <p ng-show="(userForm.phonenumber.$error.minlength || userForm.phonenumber.$error.maxlength) && (userForm.phonenumber.$dirty || submitted)" class="help-block">Enter a valid phone number.</p>
     </div>
 
     <!-- CITY -->
     <div class="form-group" ng-class="{ 'has-error' : userForm.city.$invalid && (userForm.city.$dirty || submitted)}">
         <label>City</label>
-        <input type="text" name="city" class="form-control" ng-model="user.city" placeholder="Your City" ng-required="true">
+        <input type="text" name="city" class="form-control" ng-model="user.city" ng-pattern="/^[a-zA-Z\s\-]*$/" placeholder="Your City" ng-required="true">
         <p ng-show="userForm.city.$error.required && (userForm.city.$dirty || submitted)" class="help-block">Your city is required.</p>
+        <p ng-show="userForm.city.$error.pattern && (userForm.city.$dirty || submitted)" class="help-block">Only letters, hyphens and spaces are allowed.</p>
     </div>
 
     <!-- ng-disabled FOR ENABLING AND DISABLING SUBMIT BUTTON -->
