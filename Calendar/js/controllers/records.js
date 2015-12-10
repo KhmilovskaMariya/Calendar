@@ -1,7 +1,8 @@
-﻿angular.module('calendar')
+﻿// Iryna Vakhnianyn
+angular.module('calendar')
 .controller('records', function ($scope, repository, $routeParams) {
 
-    var monthNames = ['Січня', 'Лютого', 'Березня', 'Квітня', 'Травня', 'Червня', 'Липня', 'Серпня', 'Вересня', 'Жовтня', 'Листопада', 'Грудня'];
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     $scope.date = {
         day: $routeParams.day,
         monthName: monthNames[$routeParams.month - 1],

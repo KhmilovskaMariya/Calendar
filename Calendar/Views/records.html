@@ -1,16 +1,17 @@
-﻿<div>
-    <h2 class="text-center">{{date.day}} {{date.monthName}} {{date.year}}</h2>
-    <h2 class="text-center">Профіль: {{currentProfile.Title}}</h2>
+﻿<!-- Iryna Vakhnianyn -->
+<div>
+    <h2 class="text-center">{{date.monthName}} {{date.day}}, {{date.year}}</h2>
+    <h2 class="text-center">Profile: {{currentProfile.Title}}</h2>
 
     <ul class="list-group">
         <li ng-repeat="record in records" class="list-group-item clearfix">
             <div ng-hide="isEditing && indexToEdit === $index">
                 {{record.Text}}
                 <span class="pull-right btn-group" >
-                    <button class="btn btn-default btn-xs" ng-click="startEdit($index)">
+                    <button class="btn btn-default btn-xs" ng-click="startEdit($index)" title="edit">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-default btn-xs" ng-click="DeleteRecord(record)">
+                    <button class="btn btn-default btn-xs" ng-click="DeleteRecord(record)" title="delete">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </span>
