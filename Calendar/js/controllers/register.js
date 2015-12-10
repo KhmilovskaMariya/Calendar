@@ -8,11 +8,15 @@
             // set the 'submitted' flag to true
             $scope.submitted = true;
 
+            // check if user form is valid
             if ($scope.userForm.$valid) {
+                // search for user by phone number
                 repository.user.find($scope.user.phonenumber, function (user) {
                     $scope.userExists = true;
                 }, function (data) {
                     if (data.status == 404) {
+
+                        // creating new user if one doesn't already exist
                         repository.user.create({
                             FirstName: $scope.user.name,
                             LastName: $scope.user.surname,
@@ -32,7 +36,7 @@
                 });
 
             } else {
-                alert("Please correct errors!");
+                alert("Please correct errors!"); // if form is not valid, correct mistakes
             }
         };
     })
@@ -43,7 +47,7 @@
                 var comparefield = document.getElementsByName(attrs.ngCompare)[0]; //getting first element
                 var compareEl = angular.element(comparefield);
 
-                //current field key up
+                // current field key up
                 currentEl.on('keyup', function () {
                     if (compareEl.val() !== "") {
                         var isMatch = currentEl.val() === compareEl.val();
@@ -52,7 +56,7 @@
                     }
                 });
 
-                //element to compare field key up
+                // element to compare field key up
                 compareEl.on('keyup', function () {
                     if (currentEl.val() !== "") {
                         var isMatch = currentEl.val() === compareEl.val();
