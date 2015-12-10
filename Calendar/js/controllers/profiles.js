@@ -1,10 +1,13 @@
-﻿angular.module('calendar')
+﻿//Roman Vovk
+angular.module('calendar')
 .controller('profiles', function ($scope, repository) {
 
+    //saves profiles into $scope.profiles
     repository.profiles.getForCurrentUser(function (x) {
         $scope.profiles = x;
     });
 
+    //saves current user's id into $scope.currentUserId
     repository.user.getCurrent(function (x) {
         $scope.currentUserId = x.Id;
     });
@@ -13,11 +16,15 @@
 
     $scope.errorExist = false;
 
+    //hides all error messages
     $scope.hideErrors = function () {
         $scope.errorEmpty = false;
         $scope.errorExist = false;
     }
 
+    //checks if profile exists
+    //parameters: x - title of the profile
+    //            index - index of profile
     $scope.doesExist = function (x, index) {
         var exist = false;
 
@@ -30,6 +37,7 @@
         return exist;
     }
 
+    //adds new profile to database and profiles array
     $scope.onAddProfileClick = function () {
         if ($scope.newProfileTitle == undefined || $scope.newProfileTitle == "") {
 
@@ -54,10 +62,14 @@
         }
     };
 
+    //deletes profile from database and profiles array
+    //parameters: index - index of the profile
     $scope.onDeleteButtonClick = function (index) {
-        repository.profile.delByid($scope.profiles[index].Id, function () {
-            $scope.profiles.splice(index, 1);
-        });
+        if (confirm("Do you really want to delete this profile?")) {
+            repository.profile.delByid($scope.profiles[index].Id, function () {
+                $scope.profiles.splice(index, 1);
+            });
+        }
     };
 
     $scope.isEditing = false;
@@ -68,6 +80,7 @@
 
     $scope.newEditedTitle.Title = "";
 
+    //starts profile editing process
     $scope.startEdit = function (index) {
         $scope.isEditing = true;
         $scope.indexToEdit = index;
@@ -75,6 +88,7 @@
 
     }
 
+    //cancels profile editing process
     $scope.cancelEdit = function (index) {
         $scope.indexToEdit = -1;
         $scope.isEditing = false;
@@ -82,7 +96,8 @@
         $scope.errorEmpty = false;
         $scope.errorExist = false;
     };
-
+    
+    //saves edited profile to database and profiles array
     $scope.saveEdited = function (index) {
         if ($scope.newEditedTitle.Title == undefined || $scope.newEditedTitle.Title == "") {
 
@@ -90,7 +105,6 @@
             $scope.errorExist = false;
         }
         else if (!$scope.doesExist($scope.newEditedTitle.Title, index)) {
-            console.log("mes");
             if ($scope.profiles[index].Title != $scope.newEditedTitle.Title) {
                 repository.profile.putById($scope.profiles[index].Id, {
                     Id: $scope.profiles[index].Id,
