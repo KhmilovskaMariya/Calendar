@@ -7,7 +7,7 @@
                 {{profile.Title}}
                 <span class="pull-right">
                     <button class="btn btn-default btn-xs" data-ng-click="startEdit($index)">edit</button>
-                    <button class="btn btn-default btn-xs" data-ng-click="onDeleteButtonClick($index)">delete</button>
+                    <button class="btn btn-default btn-xs" data-ng-click="onDeleteButtonClick($index)" data-ng-disabled="profiles.length <= 1">delete</button>
                 </span>
             </div>
 

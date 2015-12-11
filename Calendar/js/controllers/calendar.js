@@ -62,6 +62,9 @@ angular.module('calendar')
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     $scope.monthName = monthNames[$scope.month - 1];
 
+    // generate calendar matrix before records loaded
+    fillDays([]);
+
     repository.profiles.getForCurrentUser(function (profiles) {
         fillProfiles(profiles);
         var records = repository.records.getByIDForYearMonth(
