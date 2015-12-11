@@ -1,0 +1,64 @@
+﻿<!--Yaroslav Khamar-->
+<h2 class="text-center">Registration</h2>
+<form name="userForm" data-ng-submit="submitForm()" novalidate>
+
+    <!-- NAME -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.name.$invalid && (userForm.name.$dirty || submitted)}">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" data-ng-model="user.name" data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Your Name" data-ng-required="true">
+        <p data-ng-show="userForm.name.$error.required && (userForm.name.$dirty || submitted)" class="help-block">You name is required.</p>
+        <p data-ng-show="userForm.name.$error.pattern && (userForm.name.$dirty || submitted)" class="help-block">Only letters and hyphens are allowed.</p>
+    </div>
+
+    <!-- SURNAME -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.surname.$invalid && (userForm.surname.$dirty || submitted)}">
+        <label>Surname</label>
+        <input type="text" name="surname" class="form-control" data-ng-model="user.surname"  data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Your Surname" data-ng-required="true">
+        <p data-ng-show="userForm.surname.$error.required && (userForm.surname.$dirty || submitted)" class="help-block">Your surname is required.</p>
+        <p data-ng-show="userForm.surname.$error.pattern && (userForm.surname.$dirty || submitted)" class="help-block">Only letters and hyphens are allowed.</p>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid && (userForm.password.$dirty || submitted)}">
+        <label>Password</label>
+        <input type="Password" name="password" class="form-control" data-ng-minlength="6" data-ng-model="user.password" placeholder="Your Password" data-ng-required="true">
+        <p data-ng-show="userForm.password.$error.required && (userForm.password.$dirty || submitted)" class="help-block">Your password is required.</p>
+        <p data-ng-show="userForm.password.$error.minlength && (userForm.password.$dirty || submitted)" class="help-block">Your password must be at least 6 symbols.</p>
+    </div>
+
+    <!-- CONFIRM PASSWORD -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.confirmPassword.$invalid && (userForm.confirmPassword.$dirty || submitted)}">
+        <label>Confirm Password</label>
+        <input type="Password" name="confirmPassword" class="form-control" data-ng-model="user.confirmPassword" placeholder="Confirm Your Password" data-ng-compare="password" data-ng-required="true">
+        <p data-ng-show="userForm.confirmPassword.$error.required && (userForm.confirmPassword.$dirty || submitted)" class="help-block">Your confirm password is required.</p>
+        <p data-ng-show="userForm.confirmPassword.$error.compare && (userForm.confirmPassword.$dirty || submitted)" class="help-block">Confirm password doesnot match.</p>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid && (userForm.email.$dirty || submitted)}">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Your Email Address" data-ng-required="true">
+        <p data-ng-show="userForm.email.$error.required && (userForm.email.$dirty || submitted)" class="help-block">Email is required.</p>
+        <p data-ng-show="userForm.email.$error.email && (userForm.email.$dirty || submitted)" class="help-block">Enter a valid email.</p>
+    </div>
+
+    <!-- PHONE NUMBER -->
+    <div class="form-group" data-ng-class="{ 'has-error' : (userForm.phonenumber.$invalid && (userForm.phonenumber.$dirty || submitted)) || userExists }">
+        <label>Phone Number</label>
+        <input type="tel" name="phonenumber" class="form-control" data-ng-model="user.phonenumber" placeholder="Your Phone Number" data-ng-minlength="10" data-ng-maxlength="10" data-ng-required="true">
+        <p data-ng-show="userExists" class="help-block">Phone number already registered.</p>
+        <p data-ng-show="userForm.phonenumber.$error.required && (userForm.phonenumber.$dirty || submitted)" class="help-block">Your phone number is required.</p>
+        <p data-ng-show="(userForm.phonenumber.$error.minlength || userForm.phonenumber.$error.maxlength) && (userForm.phonenumber.$dirty || submitted)" class="help-block">Enter a valid phone number.</p>
+    </div>
+
+    <!-- CITY -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.city.$invalid && (userForm.city.$dirty || submitted)}">
+        <label>City</label>
+        <input type="text" name="city" class="form-control" data-ng-model="user.city" data-ng-pattern="/^[a-zA-Z\s\-]*$/" placeholder="Your City" data-ng-required="true">
+        <p data-ng-show="userForm.city.$error.required && (userForm.city.$dirty || submitted)" class="help-block">Your city is required.</p>
+        <p data-ng-show="userForm.city.$error.pattern && (userForm.city.$dirty || submitted)" class="help-block">Only letters, hyphens and spaces are allowed.</p>
+    </div>
+
+    <!-- ng-disabled FOR ENABLING AND DISABLING SUBMIT BUTTON -->
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

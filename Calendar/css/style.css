@@ -1,0 +1,107 @@
+﻿html {
+    height: 100%;
+}
+body {
+	background-image: url('../Content/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}		
+.main {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	padding: 20px;
+	background: rgba(255,255,255,0.9);
+}	
+.container {
+	margin-top: 10px;
+}
+.m-a-1 {
+    margin: 1em;
+}
+.m-a-0 {
+    margin: 0em;
+}
+.mainTitle {
+    color: #FFE893;
+    text-shadow: 0px 0px 20px #000;
+    font-weight: bold;
+    font-size: 5em;
+}
+.topMargin {
+    margin-top: 10px;
+}
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+.width-col-7{
+    width: 14.2857%;
+}
+.dayBox {
+    position: relative;
+    padding: .35em 0em;
+    margin: .2em;
+    box-shadow: 1px 2px 5px #888;
+    font-size: 20pt;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+}
+.dayBox:hover {
+    text-decoration: none;
+    background-color: #428bca;
+    color: #fff;
+}
+.dayBox.disabled {
+    background-color: #eee;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+}
+.dayBox.disabled:hover {
+    color: #000;
+}
+.text-bold {
+    font-weight: bold;
+}
+.recordsCount {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    font-size: 50%;
+    font-weight: normal;
+    color: #888;
+}
+.dayBox:hover .recordsCount{
+    color: #ddd;
+}
+.monthNav, .monthNav:active {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    font-size: 30px;
+    /*line-height: 100px;*/
+    padding: 30px;
+    cursor: pointer;
+}
+.monthNav:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+.monthNav.previous {
+    float: left;
+}
+.monthNav.next {
+    float: right;
+}
+.userPanel {
+    float: right;
+    margin-top: 15px;
+    text-align: right;
+    background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.8), rgba(255,255,255,1.0), rgba(255,255,255,0.9));
+    padding: 10px;
+    padding-left: 30px;
+}
+

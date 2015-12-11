@@ -1,0 +1,41 @@
+﻿<!-- Roman Vovk -->
+<div>
+    <h2 class="h2, text-center">Profiles</h2>
+
+    <ul class="list-group">
+        <li data-ng-repeat="profile in profiles" class="list-group-item clearfix">
+            <div data-ng-hide="isEditing && indexToEdit === $index">
+                {{profile.Title}}
+                <span class="pull-right">
+                    <button class="btn btn-default btn-xs" data-ng-click="startEdit($index)">edit</button>
+                    <button class="btn btn-default btn-xs" data-ng-click="onDeleteButtonClick($index)" data-ng-disabled="profiles.length <= 1">delete</button>
+                </span>
+            </div>
+
+            <form data-ng-show="isEditing && indexToEdit === $index">
+                <div class="input-group" data-ng-class="{'has-error' : errorEmpty || errorExist, 'has-feedback' : errorEmpty || errorExist}">
+                    <input type="text" class="form-control" data-ng-model="newEditedTitle.Title" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" data-ng-click="saveEdited($index)">save</button>
+                        <button class="btn btn-default" type="button" data-ng-click="cancelEdit($index)">cancel</button>
+                    </span>
+                </div>
+            </form>
+
+        </li>
+    </ul>
+
+    <form>
+        <div class="input-group" data-ng-class="{'has-error' : errorEmpty || errorExist, 'has-feedback' : errorEmpty || errorExist}">
+            <input type="text" data-ng-model="newProfileTitle" class="form-control" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" data-ng-click="onAddProfileClick()">add</button>
+            </span>
+        </div>
+
+        <div class="alert alert-danger topMargin" data-ng-show="errorEmpty || errorExist">
+            <strong>Error!</strong> <span data-ng-show="errorEmpty">Profile is empty</span><span data-ng-show="errorExist">Profile already exists</span>
+        </div>
+    </form>
+    <a href="#/calendar">Back to calendar</a>
+</div>

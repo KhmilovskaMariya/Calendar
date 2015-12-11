@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="calendar">
+<head>
+    <title>AMI-33 Calendar</title>
+
+    <script type="text/javascript" src="Scripts/angular.min.js"></script>
+    <script type="text/javascript" src="Scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/repository.js"></script>
+    <script type="text/javascript" src="js/controllers/login.js"></script>
+    <script type="text/javascript" src="js/controllers/register.js"></script>
+    <script type="text/javascript" src="js/controllers/calendar.js"></script>
+    <script type="text/javascript" src="js/controllers/profiles.js"></script>
+    <script type="text/javascript" src="js/controllers/records.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="userPanel" data-ng-show="currentUser">
+                <strong>{{currentUser.FirstName}} {{currentUser.LastName}}</strong><br />
+                <a href="#" data-ng-click="logout()">Log out</a>
+            </div>
+            <h1 class="text-center mainTitle">Calendar</h1>
+            <div class="main" data-ng-view>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

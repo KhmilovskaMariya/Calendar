@@ -1,0 +1,36 @@
+﻿<!-- Oleg Pylypchak -->
+<a href="#" data-ng-href="#/calendar/{{currentProfile.Id}}/date/{{prev.year}}/{{prev.month}}" class="monthNav previous glyphicon glyphicon-menu-left" title="Previous month"></a>
+<a href="#" data-ng-href="#/calendar/{{currentProfile.Id}}/date/{{next.year}}/{{next.month}}" class="monthNav next glyphicon glyphicon-menu-right" title="Next month"></a>
+<h2 class="text-center">{{monthName}} {{year}}</h2>
+<div class="text-center">
+    <div class="btn-group m-a-1">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                {{currentProfile.Title}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li data-ng-repeat="profile in profiles">
+                    <a data-ng-href="#/calendar/{{profile.Id}}/date/{{year}}/{{month}}">{{profile.Title}}</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#/profiles" class="btn btn-primary">Manage</a>
+    </div>
+</div>
+
+<table border="0" class="container-full">
+    <tr>
+        <td data-ng-repeat="day in daysOfWeek" class="text-center">
+            {{day}}
+        </td>
+    </tr>
+    <tr data-ng-repeat="week in days">
+        <td data-ng-repeat="day in week" class="text-center width-col-7">
+            <a href="#" data-ng-href="#/records/{{currentProfile.Id}}/date/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
+               data-ng-class="{'disabled':!day.currMonth, 'text-bold':day.records>0}">
+                {{day.day}}
+                <span class="recordsCount" data-ng-if="day.records>0">{{day.records}}</span>
+            </a>
+        </td>
+    </tr>
+</table>
