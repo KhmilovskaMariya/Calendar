@@ -11,6 +11,6 @@ angular.module('calendar')
                 // if not, show error message
                 $scope.errorPhone = (data.error_description == 'username');
                 $scope.errorPassword = (data.error_description == 'password');
-            })
+            });
     };
 });

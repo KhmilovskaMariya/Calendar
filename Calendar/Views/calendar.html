@@ -1,6 +1,6 @@
 ﻿<!-- Oleg Pylypchak -->
-<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{prev.year}}/{{prev.month}}" class="monthNav previous glyphicon glyphicon-menu-left" title="Previous month"></a>
-<a href="#" ng-href="#/calendar/{{currentProfile.Id}}/date/{{next.year}}/{{next.month}}" class="monthNav next glyphicon glyphicon-menu-right" title="Next month"></a>
+<a href="#" data-ng-href="#/calendar/{{currentProfile.Id}}/date/{{prev.year}}/{{prev.month}}" class="monthNav previous glyphicon glyphicon-menu-left" title="Previous month"></a>
+<a href="#" data-ng-href="#/calendar/{{currentProfile.Id}}/date/{{next.year}}/{{next.month}}" class="monthNav next glyphicon glyphicon-menu-right" title="Next month"></a>
 <h2 class="text-center">{{monthName}} {{year}}</h2>
 <div class="text-center">
     <div class="btn-group m-a-1">
@@ -10,7 +10,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li data-ng-repeat="profile in profiles">
-                    <a ng-href="#/calendar/{{profile.Id}}/date/{{year}}/{{month}}">{{profile.Title}}</a>
+                    <a data-ng-href="#/calendar/{{profile.Id}}/date/{{year}}/{{month}}">{{profile.Title}}</a>
                 </li>
             </ul>
         </div>
@@ -20,16 +20,16 @@
 
 <table border="0" class="container-full">
     <tr>
-        <td ng-repeat="day in daysOfWeek" class="text-center">
+        <td data-ng-repeat="day in daysOfWeek" class="text-center">
             {{day}}
         </td>
     </tr>
-    <tr ng-repeat="week in days">
-        <td ng-repeat="day in week" class="text-center width-col-7">
-            <a href="#" ng-href="#/records/{{currentProfile.Id}}/date/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
-               ng-class="{'disabled':!day.currMonth, 'text-bold':day.records>0}">
+    <tr data-ng-repeat="week in days">
+        <td data-ng-repeat="day in week" class="text-center width-col-7">
+            <a href="#" data-ng-href="#/records/{{currentProfile.Id}}/date/{{year}}/{{month}}/{{day.day}}" class="dayBox" 
+               data-ng-class="{'disabled':!day.currMonth, 'text-bold':day.records>0}">
                 {{day.day}}
-                <span class="recordsCount" ng-if="day.records>0">{{day.records}}</span>
+                <span class="recordsCount" data-ng-if="day.records>0">{{day.records}}</span>
             </a>
         </td>
     </tr>

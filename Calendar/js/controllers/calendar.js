@@ -3,7 +3,7 @@ angular.module('calendar')
 .controller('calendar', function ($scope, $routeParams, repository) {
     Date.prototype.addDays = function (n) {
         this.setDate(this.getDate() + n);
-    }
+    };
     var fillProfiles = function (profiles) {
         $scope.profiles = profiles;
         if ($routeParams.profile === undefined) {
@@ -67,7 +67,7 @@ angular.module('calendar')
 
     repository.profiles.getForCurrentUser(function (profiles) {
         fillProfiles(profiles);
-        var records = repository.records.getByIDForYearMonth(
+        repository.records.getByIDForYearMonth(
             $scope.currentProfile.Id,
             $scope.year,
             $scope.month,

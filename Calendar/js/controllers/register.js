@@ -35,7 +35,7 @@ angular.module('calendar')
                                         UserId: user.Id
                                     }, function (profile) {
                                         location.hash = '#/calendar';
-                                    })
+                                    });
                                 });
                         });
                     }

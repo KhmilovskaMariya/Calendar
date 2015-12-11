@@ -14,10 +14,10 @@ angular.module('calendar')
 
     var fillRecords = function (records) {
         $scope.records = records;
-    }
+    };
     repository.profile.getById($routeParams.profile, function (profile) {
         $scope.currentProfile = profile;
-    })
+    });
     repository.records.getByIDForYearMonthDay(
         $routeParams.profile,
         $routeParams.year,
@@ -37,7 +37,7 @@ angular.module('calendar')
             $scope.newRecord = '';
         });
 
-    }
+    };
 
 
     $scope.errorEmpty = false;
@@ -47,7 +47,7 @@ angular.module('calendar')
     $scope.hideErrors = function () {
         $scope.errorEmpty = false;
         $scope.errorExist = false;
-    }
+    };
 
     $scope.doesExist = function (x, index) {
         var exist = false;
@@ -59,9 +59,9 @@ angular.module('calendar')
             }
         }
         return exist;
-    }
+    };
 
-    
+
 
     $scope.DeleteRecord = function (record) {
         if (confirm("Чи дійсно ви хочете видалити?")) {
@@ -87,7 +87,7 @@ angular.module('calendar')
         $scope.newRecordText = {};
         $scope.newRecordText.Text = $scope.records[index].Text;
 
-    }
+    };
 
     $scope.cancelEdit = function (index) {
         $scope.indexToEdit = -1;
@@ -98,13 +98,12 @@ angular.module('calendar')
     };
 
     $scope.saveEdited = function (index) {
-        if ($scope.newRecordText.Text == undefined || $scope.newRecordText.Text == "") {
+        if ($scope.newRecordText.Text === undefined || $scope.newRecordText.Text === "") {
 
             $scope.errorEmpty = true;
             $scope.errorExist = false;
         }
-        else
-        {
+        else {
             console.log("mes");
             if ($scope.records[index].Text != $scope.newRecordText.Text) {
                 repository.record.putById($scope.records[index].Id, {
@@ -121,7 +120,7 @@ angular.module('calendar')
             $scope.errorEmpty = false;
             $scope.errorExist = false;
         }
-        
+
     };
 
 });

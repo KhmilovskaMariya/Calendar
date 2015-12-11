@@ -4,25 +4,25 @@
     <h3 class="text-center">Profile: {{currentProfile.Title}}</h3>
 
     <ul class="list-group">
-        <li ng-repeat="record in records" class="list-group-item clearfix">
-            <div ng-hide="isEditing && indexToEdit === $index">
+        <li data-ng-repeat="record in records" class="list-group-item clearfix">
+            <div data-ng-hide="isEditing && indexToEdit === $index">
                 {{record.Text}}
                 <span class="pull-right btn-group" >
-                    <button class="btn btn-default btn-xs" ng-click="startEdit($index)" title="edit">
+                    <button class="btn btn-default btn-xs" data-ng-click="startEdit($index)" title="edit">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-default btn-xs" ng-click="DeleteRecord(record)" title="delete">
+                    <button class="btn btn-default btn-xs" data-ng-click="DeleteRecord(record)" title="delete">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </span>
             </div>
 
-            <form ng-show="isEditing && indexToEdit === $index">
-                <div class="input-group" ng-class="{'has-error' : errorEmpty || errorExist, 'has-feedback' : errorEmpty || errorExist}">
-                    <input type="text" class="form-control" ng-model="newRecordText.Text" />
+            <form data-ng-show="isEditing && indexToEdit === $index">
+                <div class="input-group" data-ng-class="{'has-error' : errorEmpty || errorExist, 'has-feedback' : errorEmpty || errorExist}">
+                    <input type="text" class="form-control" data-ng-model="newRecordText.Text" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit" ng-click="saveEdited($index)">save</button>
-                        <button class="btn btn-default" type="button" ng-click="cancelEdit($index)">cancel</button>
+                        <button class="btn btn-default" type="submit" data-ng-click="saveEdited($index)">save</button>
+                        <button class="btn btn-default" type="button" data-ng-click="cancelEdit($index)">cancel</button>
                     </span>
                 </div>
             </form>
@@ -31,16 +31,16 @@
     </ul>
 
     <form>
-        <div class="input-group" ng-class="{'has-error' : errorEmpty || errorExist, 'has-feedback' : errorEmpty || errorExist}">
-            <input type="text" ng-model="newRecord" class="form-control" />
+        <div class="input-group" data-ng-class="{'has-error' : errorEmpty || errorExist, 'has-feedback' : errorEmpty || errorExist}">
+            <input type="text" data-ng-model="newRecord" class="form-control" />
             <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" ng-click="addRecord(newRecord)">add</button>
+                <button class="btn btn-default" type="submit" data-ng-click="addRecord(newRecord)">add</button>
             </span>
         </div>
         <br/>
-        <div class="alert alert-danger" ng-show="errorEmpty || errorExist">
-            <strong>Error!</strong> <span ng-show="errorEmpty">Record is empty</span>
+        <div class="alert alert-danger" data-ng-show="errorEmpty || errorExist">
+            <strong>Error!</strong> <span data-ng-show="errorEmpty">Record is empty</span>
         </div>
     </form>
-    <a href="#" ng-href="#/calendar/{{profileId}}/date/{{date.year}}/{{date.month}}">Back to Calendar</a>
+    <a href="#" data-ng-href="#/calendar/{{profileId}}/date/{{date.year}}/{{date.month}}">Back to Calendar</a>
 </div>

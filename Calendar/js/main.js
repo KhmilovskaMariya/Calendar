@@ -51,7 +51,7 @@
         $http.defaults.headers.common.Authorization = '';
         $rootScope.currentUser = undefined;
         location.hash = '#/login';
-    }
+    };
 })
 
 .run(function ($rootScope, $location) {
@@ -69,7 +69,7 @@
         if (current !== undefined && current.controller != next.controller) {
             if (current.controller == 'calendar') {
                 // if scope state was previously preserverd
-                if ($rootScope.currentProfile != undefined) {
+                if ($rootScope.currentProfile !== undefined) {
                     delete $rootScope.currentProfile;
                     delete $rootScope.days;
                 }

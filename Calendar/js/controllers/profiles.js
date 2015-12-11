@@ -20,7 +20,7 @@ angular.module('calendar')
     $scope.hideErrors = function () {
         $scope.errorEmpty = false;
         $scope.errorExist = false;
-    }
+    };
 
     //checks if profile exists
     //parameters: x - title of the profile
@@ -35,11 +35,11 @@ angular.module('calendar')
             }
         }
         return exist;
-    }
+    };
 
     //adds new profile to database and profiles array
     $scope.onAddProfileClick = function () {
-        if ($scope.newProfileTitle == undefined || $scope.newProfileTitle == "") {
+        if ($scope.newProfileTitle === undefined || $scope.newProfileTitle === "") {
 
             $scope.errorEmpty = true;
             $scope.errorExist = false;
@@ -86,7 +86,7 @@ angular.module('calendar')
         $scope.indexToEdit = index;
         $scope.newEditedTitle.Title = $scope.profiles[index].Title;
 
-    }
+    };
 
     //cancels profile editing process
     $scope.cancelEdit = function (index) {
@@ -96,10 +96,10 @@ angular.module('calendar')
         $scope.errorEmpty = false;
         $scope.errorExist = false;
     };
-    
+
     //saves edited profile to database and profiles array
     $scope.saveEdited = function (index) {
-        if ($scope.newEditedTitle.Title == undefined || $scope.newEditedTitle.Title == "") {
+        if ($scope.newEditedTitle.Title === undefined || $scope.newEditedTitle.Title === "") {
 
             $scope.errorEmpty = true;
             $scope.errorExist = false;

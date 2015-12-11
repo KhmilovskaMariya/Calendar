@@ -23,9 +23,9 @@
 <body>
     <div class="container">
         <div class="col-lg-6 col-lg-offset-3">
-            <div class="userPanel" ng-show="currentUser">
+            <div class="userPanel" data-ng-show="currentUser">
                 <strong>{{currentUser.FirstName}} {{currentUser.LastName}}</strong><br />
-                <a href="#" ng-click="logout()">Log out</a>
+                <a href="#" data-ng-click="logout()">Log out</a>
             </div>
             <h1 class="text-center mainTitle">Calendar</h1>
             <div class="main" data-ng-view>
