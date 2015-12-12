@@ -7,6 +7,7 @@
 
 ## Project structure
 - Calendar/
+  - index.html   
   - js/
     - main.js
     - repository.js
@@ -15,7 +16,7 @@
       - login.js
       - profiles.js
       - records.js
-register.js
+      - register.js
   - Views/
     - calendar.html
     - login.html
@@ -26,4 +27,4 @@ register.js
     - style.css
 
 ## Demo
-- http://calendar-ami33.somee.com/
+- http://calendar2-ami33.somee.com/
